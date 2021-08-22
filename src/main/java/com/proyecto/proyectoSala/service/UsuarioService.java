@@ -9,4 +9,6 @@ public interface UsuarioService  {
     List<Usuario> findAll();
 
     Usuario save(Usuario usuario);
+
+    Usuario findById(Integer id) throws Exception;
 }

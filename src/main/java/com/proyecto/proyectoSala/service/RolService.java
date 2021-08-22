@@ -9,4 +9,6 @@ public interface RolService {
     List<Rol> findAll();
 
     Rol save(Rol rol);
+
+    Rol findById(Integer id) throws Exception;
 }

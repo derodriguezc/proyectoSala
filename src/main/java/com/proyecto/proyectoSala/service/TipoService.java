@@ -9,4 +9,6 @@ public interface TipoService {
     List<Tipo> findAll();
 
     Tipo save(Tipo tipo);
+
+    Tipo findById(Integer id) throws Exception;
 }

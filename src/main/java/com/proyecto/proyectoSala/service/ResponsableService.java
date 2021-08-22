@@ -9,4 +9,6 @@ public interface ResponsableService {
     List<Responsable> findAll();
 
     Responsable save(Responsable responsable);
+
+    Responsable findById(Integer id) throws Exception;
 }
