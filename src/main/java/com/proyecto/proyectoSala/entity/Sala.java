@@ -1,13 +1,18 @@
 package com.proyecto.proyectoSala.entity;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
+@ApiModel(description = "Información o propiedades de la Sala")
 @Entity
 @Table(name = "sala")
 public class Sala {
@@ -17,19 +22,27 @@ public class Sala {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @Column(name = "nombre_sala")
+    @ApiModelProperty(notes = "Nombre dene tener como minimo 3 caracteres")
+    @Size(min = 3, max = 50, message = "El nombre debe contener mínimo 3 caracteres")
+    @Column(name = "nombre_sala", nullable = true, length = 50)
     private String nombre_sala;
 
-    @Column(name = "ubicacion_sala")
+    @ApiModelProperty(notes = "La ubicacion_sala debe tener máximo 200 caracteres")
+    @Size(max = 200, message = "La ubicacion_sala debe tener máximo 200 caracteres")
+    @Column(name = "ubicacion_sala", nullable = true, length = 200)
     private String ubicacion_sala;
 
-    @Column(name = "tipo")
+    @ApiModelProperty(notes = "Solo existen 6 tipos de sala")
+    @Column(name = "tipo", nullable = true)
     private String tipo;
 
-    @Column(name = "estado")
+    @ApiModelProperty(notes = "Estado solo puede ser true o false")
+    @Column(name = "estado", nullable = true)
     private String estado;
 
-    @Column(name = "responsable_sala")
+    @ApiModelProperty(notes = "responsable_sala dene tener como minimo 5 caracteres")
+    @Size(min = 5, max = 50, message = "El responsable_sala debe contener mínimo 5 caracteres")
+    @Column(name = "responsable_sala", nullable = true, length = 50)
     private String responsable_sala;
 
     public Integer getId() {
