@@ -28,7 +28,7 @@ public class Usuario {
     private String apellido;
 
     @Column(name = "rut")
-    private Integer telefono;
+    private Integer rut;
 
     @Column(name = "email")
     private String email;
@@ -68,13 +68,9 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public Integer getTelefono() {
-        return telefono;
-    }
+    public Integer getRut() {return rut;}
 
-    public void setTelefono(Integer telefono) {
-        this.telefono = telefono;
-    }
+    public void setTelefono(Integer rut) {this.rut = rut;}
 
     public String getEmail() {
         return email;
