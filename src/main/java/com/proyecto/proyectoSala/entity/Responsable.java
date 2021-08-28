@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class Responsable {
     private String nombre;
 
     @ApiModelProperty(notes = "Email dene tener como minimo 8 caracteres")
-    @Size(min = 8, max = 50, message = "El nombre debe contener mínimo 3 caracteres")
+    @Size(min = 8, max = 50, message = "El Email debe contener mínimo 8 caracteres")
     @Column(name = "email", nullable = true, length = 50)
     private String email;
 
@@ -38,17 +39,22 @@ public class Responsable {
     @Column(name = "telefono", nullable = true, length = 9)
     private Integer telefono;
 
-    @ManyToOne
-    @JoinColumn(name = "id_sala", nullable = false)
-    private Sala sala;
 
-    public Integer getId_responable() {
-        return id;
-    }
+    //No me permite guardar el respnsbale ya que me da un error de
+   /* {
+        "timestamp": "2021-08-28T17:40:56.604",
+            "mensaje": "Could not commit JPA transaction; nested exception is javax.persistence.RollbackException: Error while committing the transaction",
+            "detalles": "uri=/responsable"
+    }*/
 
-    public void setId_responable(Integer id_responable) {
-        this.id = id_responable;
-    }
+
+    //@ManyToOne
+    //@JoinColumn(name = "id_sala", nullable = false, foreignKey = @ForeignKey(name = "FK_responsable_sala"))
+    //private Sala sala;
+
+    public Integer getId() {return id;}
+
+    public void setId(Integer id) {this.id = id;}
 
     public String getNombre() {
         return nombre;
