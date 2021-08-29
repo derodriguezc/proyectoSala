@@ -1,8 +1,9 @@
-package com.proyecto.proyectoSala.service;
+package com.proyecto.proyectoSala.service.impl;
 
 import com.proyecto.proyectoSala.entity.Rol;
 import com.proyecto.proyectoSala.exception.ModeloNotFoundException;
 import com.proyecto.proyectoSala.repository.RolRepository;
+import com.proyecto.proyectoSala.service.RolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

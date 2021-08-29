@@ -1,8 +1,9 @@
-package com.proyecto.proyectoSala.service;
+package com.proyecto.proyectoSala.service.impl;
 
 import com.proyecto.proyectoSala.entity.Tipo;
 import com.proyecto.proyectoSala.exception.ModeloNotFoundException;
 import com.proyecto.proyectoSala.repository.TipoRepository;
+import com.proyecto.proyectoSala.service.TipoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

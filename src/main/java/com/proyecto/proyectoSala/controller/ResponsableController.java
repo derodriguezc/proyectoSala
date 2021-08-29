@@ -1,7 +1,7 @@
 package com.proyecto.proyectoSala.controller;
 
 import com.proyecto.proyectoSala.entity.Responsable;
-import com.proyecto.proyectoSala.service.ResponsableServiceImpl;
+import com.proyecto.proyectoSala.service.impl.ResponsableServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;

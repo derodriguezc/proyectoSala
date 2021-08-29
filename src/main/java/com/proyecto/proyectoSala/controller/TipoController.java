@@ -1,8 +1,7 @@
 package com.proyecto.proyectoSala.controller;
 
-import com.proyecto.proyectoSala.entity.Rol;
 import com.proyecto.proyectoSala.entity.Tipo;
-import com.proyecto.proyectoSala.service.TipoServiceImpl;
+import com.proyecto.proyectoSala.service.impl.TipoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

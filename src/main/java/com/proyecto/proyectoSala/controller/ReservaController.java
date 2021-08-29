@@ -1,8 +1,7 @@
 package com.proyecto.proyectoSala.controller;
 
 import com.proyecto.proyectoSala.entity.Reserva;
-import com.proyecto.proyectoSala.entity.Sala;
-import com.proyecto.proyectoSala.service.ReservaServiceImpl;
+import com.proyecto.proyectoSala.service.impl.ReservaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
