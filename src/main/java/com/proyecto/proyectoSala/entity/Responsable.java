@@ -47,10 +47,17 @@ public class Responsable {
             "detalles": "uri=/responsable"
     }*/
 
+    @ManyToOne
+    @JoinColumn(name = "id_sala", nullable = false, foreignKey = @ForeignKey(name = "FK_responsable_sala"))
+    private Sala sala;
 
-    //@ManyToOne
-    //@JoinColumn(name = "id_sala", nullable = false, foreignKey = @ForeignKey(name = "FK_responsable_sala"))
-    //private Sala sala;
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
 
     public Integer getId() {return id;}
 
