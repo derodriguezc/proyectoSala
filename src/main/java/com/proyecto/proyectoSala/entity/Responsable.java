@@ -10,9 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @ApiModel(description = "Información o propiedades del Responsable")
 @Entity
@@ -35,28 +38,23 @@ public class Responsable {
     private String email;
 
     @ApiModelProperty(notes = "El telefono no debe ser mayor ni menor de 9")
-    @Size(min = 9, max = 9, message = "El telefono no debe ser mayor ni menor de 9")
-    @Column(name = "telefono", nullable = true, length = 9)
+    //@Size(min = 8, max = 10, message = "El telefono no debe ser mayor ni menor de 9")
+    @Column(name = "telefono", nullable = true, length = 10)
     private Integer telefono;
 
+    @ManyToMany
+    @JoinTable(
+            name = "responsable_sala",
+            joinColumns = @JoinColumn(name = "id_sala"),
+            inverseJoinColumns = @JoinColumn(name = "id_responsale"))
+    private List<Sala> salas;
 
-    //No me permite guardar el respnsbale ya que me da un error de
-   /* {
-        "timestamp": "2021-08-28T17:40:56.604",
-            "mensaje": "Could not commit JPA transaction; nested exception is javax.persistence.RollbackException: Error while committing the transaction",
-            "detalles": "uri=/responsable"
-    }*/
-
-    @ManyToOne
-    @JoinColumn(name = "id_sala", nullable = false, foreignKey = @ForeignKey(name = "FK_responsable_sala"))
-    private Sala sala;
-
-    public Sala getSala() {
-        return sala;
+    public List<Sala> getSalas() {
+        return salas;
     }
 
-    public void setSala(Sala sala) {
-        this.sala = sala;
+    public void setSalas(List<Sala> salas) {
+        this.salas = salas;
     }
 
     public Integer getId() {return id;}
