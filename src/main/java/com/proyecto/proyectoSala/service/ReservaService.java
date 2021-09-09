@@ -1,5 +1,6 @@
 package com.proyecto.proyectoSala.service;
 
+import com.proyecto.proyectoSala.dto.ReservaDTO;
 import com.proyecto.proyectoSala.entity.Reserva;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface ReservaService {
     List<Reserva> findAll();
 
     Reserva save(Reserva reserva);
+
+    List<ReservaDTO> findAllReservas();
 }

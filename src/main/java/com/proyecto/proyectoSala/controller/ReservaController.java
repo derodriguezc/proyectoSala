@@ -1,5 +1,6 @@
 package com.proyecto.proyectoSala.controller;
 
+import com.proyecto.proyectoSala.dto.ReservaDTO;
 import com.proyecto.proyectoSala.entity.Reserva;
 import com.proyecto.proyectoSala.service.impl.ReservaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +37,10 @@ public class ReservaController {
         public @ResponseBody Reserva save(@RequestBody Reserva reserva){
             return reservaService.save(reserva);
         }
+
+        @GetMapping("/dto")
+        public List<ReservaDTO> findAllReservas(){
+                return reservaService.findAllReservas();
+        }
+
 }

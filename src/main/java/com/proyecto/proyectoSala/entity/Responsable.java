@@ -5,14 +5,12 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -25,7 +23,7 @@ public class Responsable {
     @Id
     @Column(name = "id_responsable")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer id;
+    private Integer idResponsable;
 
     @ApiModelProperty(notes = "Nombre dene tener como minimo 3 caracteres")
     @Size(min = 3, max = 50, message = "El nombre debe contener mínimo 3 caracteres")
@@ -38,15 +36,15 @@ public class Responsable {
     private String email;
 
     @ApiModelProperty(notes = "El telefono no debe ser mayor ni menor de 9")
-    //@Size(min = 8, max = 10, message = "El telefono no debe ser mayor ni menor de 9")
+    @Size(min = 9, max = 9, message = "El telefono no debe ser mayor ni menor de 9")
     @Column(name = "telefono", nullable = true, length = 10)
-    private Integer telefono;
+    private String telefono;
 
     @ManyToMany
     @JoinTable(
             name = "responsable_sala",
             joinColumns = @JoinColumn(name = "id_sala"),
-            inverseJoinColumns = @JoinColumn(name = "id_responsale"))
+            inverseJoinColumns = @JoinColumn(name = "id_responsable"))
     private List<Sala> salas;
 
     public List<Sala> getSalas() {
@@ -57,9 +55,13 @@ public class Responsable {
         this.salas = salas;
     }
 
-    public Integer getId() {return id;}
+    public Integer getIdResponsable() {
+        return idResponsable;
+    }
 
-    public void setId(Integer id) {this.id = id;}
+    public void setIdResponsable(Integer idResponsable) {
+        this.idResponsable = idResponsable;
+    }
 
     public String getNombre() {
         return nombre;
@@ -77,11 +79,11 @@ public class Responsable {
         this.email = email;
     }
 
-    public Integer getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 }

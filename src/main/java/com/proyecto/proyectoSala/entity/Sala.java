@@ -20,7 +20,7 @@ public class Sala {
     @Id
     @Column(name = "id_sala")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer id;
+    private Integer idSala;
 
     @ApiModelProperty(notes = "Nombre dene tener como minimo 3 caracteres")
     @Size(min = 3, max = 50, message = "El nombre debe contener mínimo 3 caracteres")
@@ -45,12 +45,12 @@ public class Sala {
     @Column(name = "responsable_sala", nullable = true, length = 50)
     private String responsable_sala;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdSala() {
+        return idSala;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdSala(Integer idSala) {
+        this.idSala = idSala;
     }
 
     public String getNombre_sala() {

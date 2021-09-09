@@ -2,12 +2,14 @@ package com.proyecto.proyectoSala.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,11 +21,20 @@ public class Reserva {
     @Id
     @Column(name = "id_reserva")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer id;
+    private Integer idReserva;
 
-// No muestra la fecha en la tabla, debo enviarla en el Postman?
+// No muestra la fecha en la tabla, debo encontrar el formato.
     @Column(name = "fecha")
     private LocalDateTime fecha;
+
+    @ManyToOne
+    @JoinColumn(name = "id_sala", nullable = false, foreignKey = @ForeignKey(name = "FK_reserva_sala"))
+    private Sala sala;
+
+    @ManyToOne
+    @JoinColumn(name = "id_responsable", nullable = false, foreignKey = @ForeignKey(name = "FK_reserva_responsable"))
+    private Responsable responsable;
+
 
     @Column(name = "hora_inicio")
     private String hora_inicio;
@@ -31,27 +42,19 @@ public class Reserva {
     @Column(name = "hora_fin")
     private String hora_fin;
 
-    @ManyToMany
-    @JoinTable(
-            name = "salaReserva",
-            joinColumns = @JoinColumn(name = "id_sala"),
-            inverseJoinColumns = @JoinColumn(name = "id_reserva"))
-    private List<Rol> roles;
+   @ManyToMany
+   @JoinTable(
+           name = "salaReserva",
+           joinColumns = @JoinColumn(name = "id_sala"),
+           inverseJoinColumns = @JoinColumn(name = "id_reserva"))
+    private List<Sala> salas;
 
-    public Integer getId_reserva() {
-        return id;
+    public List<Sala> getSalas() {
+        return salas;
     }
 
-    public void setId_reserva(Integer id_reserva) {
-        this.id = id_reserva;
-    }
-
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
+    public void setSalas(List<Sala> salas) {
+        this.salas = salas;
     }
 
     public String getHora_inicio() {
@@ -68,5 +71,37 @@ public class Reserva {
 
     public void setHora_fin(String hora_fin) {
         this.hora_fin = hora_fin;
+    }
+
+    public Integer getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(Integer idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
+
+    public Responsable getResponsable() {
+        return responsable;
+    }
+
+    public void setResponsable(Responsable responsable) {
+        this.responsable = responsable;
     }
 }

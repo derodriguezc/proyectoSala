@@ -47,10 +47,6 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "id_rol"))
     private List<Rol> roles;
 
-    //@ManyToOne
-    //@JoinColumn(name = "id_reserva", nullable = true)
-    //private Reserva reserva;
-
     public Integer getId() {
         return id;
     }
